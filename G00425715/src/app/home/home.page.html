@@ -10,6 +10,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input label="Enter Country"></ion-input>
-  <ion-button expand="block">Search</ion-button>
+  <ion-input label="Enter Country" [(ngModel)]="countryInput"></ion-input>
+  <ion-button expand="block" (click)="searchCountry()">Search</ion-button>
 </ion-content>
