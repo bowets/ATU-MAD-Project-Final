@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonRadioGroup, IonRadio } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +16,7 @@ export class SettingsPage implements OnInit {
 
   currentSetting: string = "";
 
-  constructor(private ds: MyDataService) { }
+  constructor(private ds: MyDataService, private router: Router) { }
 
   ngOnInit() {
     this.checkSettings();
@@ -25,6 +26,9 @@ export class SettingsPage implements OnInit {
     this.currentSetting = await this.ds.get('settings');
   }
 
-
-
+  async onRadioChange(event: any) {
+    this.currentSetting = event.detail.value;
+    await this.ds.set('settings', this.currentSetting);
+    this.router.navigate(['/home']);
+  }
 }
