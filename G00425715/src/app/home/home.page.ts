@@ -7,10 +7,11 @@ import {
   IonButtons, 
   IonButton, 
   IonIcon,
-  IonInput 
+  IonInput
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { settingsOutline} from 'ionicons/icons';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,8 @@ import { settingsOutline} from 'ionicons/icons';
     IonButtons, 
     IonButton, 
     IonIcon, 
-    IonInput 
+    IonInput,
+    RouterModule
   ],
 })
 export class HomePage {
