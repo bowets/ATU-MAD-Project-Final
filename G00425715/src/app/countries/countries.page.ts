@@ -23,6 +23,8 @@ export class CountriesPage implements OnInit {
     url: "https://restcountries.com/v3.1/name/"
   }
   countryData: any;
+  countryCode: string = "";
+
 
   // ------ CONSTRUCTOR ------------
   constructor(private ds: MyDataService, private router:Router, private mhs:MyHttpService) { }
@@ -35,17 +37,19 @@ export class CountriesPage implements OnInit {
     this.initialStoregeData();
   }
 
+
   // ------- METHODS ------------
   async initialStoregeData() {
     this.countrySearch = await this.ds.get('country');
     this.options.url = "https://restcountries.com/v3.1/name/" + this.countrySearch;
     let result = await this.mhs.get(this.options);
     this.countryData = result.data;
-    console.log(JSON.stringify(this.countryData[0]));
+    console.log(result);
   }
 
-  getNews() {
-    console.log('Getting news');
+  async getNews(country: string) {
+    console.log('Getting news from ' + country);
+    await this.ds.set('countryCode', country)
     this.router.navigate(['/news']);
   };
 
