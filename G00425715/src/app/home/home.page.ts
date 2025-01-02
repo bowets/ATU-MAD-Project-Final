@@ -6,8 +6,9 @@ import {
   IonContent, 
   IonButtons, 
   IonButton, 
-  IonIcon } 
-  from '@ionic/angular/standalone';
+  IonIcon,
+  IonInput 
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { settingsOutline} from 'ionicons/icons';
 
@@ -16,7 +17,16 @@ import { settingsOutline} from 'ionicons/icons';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon ],
+  imports: [
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonButtons, 
+    IonButton, 
+    IonIcon, 
+    IonInput 
+  ],
 })
 export class HomePage {
   constructor() {
