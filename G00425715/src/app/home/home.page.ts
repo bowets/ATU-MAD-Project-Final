@@ -56,6 +56,10 @@ export class HomePage {
     this.checkSettings();
   }
 
+  ionViewDidEnter() {
+    this.countryInput = "";
+  }
+
   // ------- METHODS ------------
 
   // Check if settings exist. If not, set metric as default

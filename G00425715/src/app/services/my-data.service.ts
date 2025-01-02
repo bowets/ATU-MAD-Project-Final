@@ -27,4 +27,9 @@ export class MyDataService {
    async get(key: string) {
     return await this.storage.get(key);
    }
+
+   // Method that will remove the value at the key
+   async remove(key: string) {
+    await this.storage.remove(key);
+   }
 }
