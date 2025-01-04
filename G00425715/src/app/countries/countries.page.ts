@@ -23,7 +23,6 @@ export class CountriesPage implements OnInit {
     url: "https://restcountries.com/v3.1/name/"
   }
   countryData: any;
-  countryCode: string = "";
 
 
   // ------ CONSTRUCTOR ------------
@@ -40,33 +39,25 @@ export class CountriesPage implements OnInit {
 
   // ------- METHODS ------------
   async initialStoregeData() {
-    this.countrySearch = await this.ds.get('country');
+    this.countrySearch = await this.ds.get('country'); //BOJAN: get from router
     this.options.url = "https://restcountries.com/v3.1/name/" + this.countrySearch;
     let result = await this.mhs.get(this.options);
     this.countryData = result.data;
     console.log(result);
   }
 
-  async setCountryName(countryCode: string) {
-    for (let country of this.countryData) {
-      if (country.cca2 == countryCode) {
-        await this.ds.set('countryName', country.name.official);
-        break;
-      }
-    }
-    }
-
-  async getNews(country: string) {
-    console.log('Getting news from ' + country);
-    await this.ds.set('countryCode', country)
-    this.setCountryName(country);
+  async getNews(countryCode: string, countryName: string) {
+    console.log('Getting news from ' + countryCode);
+    await this.ds.set('countryCode', countryCode)
+    await this.ds.set('countryName', countryName)
     this.router.navigate(['/news']);
-  };
+  }
 
-  getWeather() {
+  async getWeather(capitalCity: string, latitudeLongitude: any) {
+    console.log(capitalCity, latitudeLongitude);
+    await this.ds.set('capitalCity', capitalCity);
+    await this.ds.set('latitudeLongitude', latitudeLongitude);
     console.log('Getting weather');
     this.router.navigate(['/weather']);
-
-  };
-
+  }
 }
