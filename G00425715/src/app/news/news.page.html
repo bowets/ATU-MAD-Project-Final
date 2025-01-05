@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- If no news from API, show that there are no news otherwise show each news story in own card -->
   <h4 *ngIf="!hasNews">There are no news found for {{countryName}}</h4>
   <div *ngIf="hasNews">
   <ion-card *ngFor="let article of newsData">

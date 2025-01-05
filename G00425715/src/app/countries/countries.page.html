@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- will loop over everything in countryData and display it in a ion card -->
   <ion-card *ngFor="let country of countryData">
     <img src={{country.flags.png}} />
     <ion-card-header>
@@ -12,6 +13,7 @@
     </ion-card-header>
   
     <ion-card-content>
+      <!-- pass country info so it can be set in storage -->
       <ion-button expand="block" fill="outline" (click)="getNews(country.cca2, country.name.official)">News</ion-button>
       <ion-button expand="block" fill="outline" (click)="getWeather(country.capital[0], country.capitalInfo.latlng)">Weather</ion-button>
     </ion-card-content>

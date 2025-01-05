@@ -9,6 +9,7 @@ export class MyHttpService {
 
   constructor() { }
 
+  // Get request using Capacitor Http 
   async get(options: HttpOptions) {
     return await CapacitorHttp.get(options);
   }

@@ -22,10 +22,12 @@ export class SettingsPage implements OnInit {
     this.checkSettings();
   }
 
+  // Get the current setting from the data service
   async checkSettings() {
     this.currentSetting = await this.ds.get('settings');
   }
 
+  // Save the setting when the radio button is changed
   async onRadioChange(event: any) {
     this.currentSetting = event.detail.value;
     await this.ds.set('settings', this.currentSetting);

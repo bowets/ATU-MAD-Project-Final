@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Calls onRadioChange function when a new button is pressed -->
   <ion-radio-group [value]="currentSetting" (ionChange)="onRadioChange($event)">
     <ion-radio value="metric">Metric</ion-radio><br />
     <ion-radio value="standard">Standard</ion-radio><br />

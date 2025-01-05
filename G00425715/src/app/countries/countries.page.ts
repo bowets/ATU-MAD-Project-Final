@@ -38,6 +38,8 @@ export class CountriesPage implements OnInit {
 
 
   // ------- METHODS ------------
+
+  // Get the country data from the API and store it in the countryData variable
   async initialStoregeData() {
     this.countrySearch = await this.ds.get('country'); //BOJAN: get from router
     this.options.url = "https://restcountries.com/v3.1/name/" + this.countrySearch;
@@ -46,6 +48,8 @@ export class CountriesPage implements OnInit {
     console.log(result);
   }
 
+
+  // set the country name and coode in storage and navigate to the news page
   async getNews(countryCode: string, countryName: string) {
     console.log('Getting news from ' + countryCode);
     await this.ds.set('countryCode', countryCode)
@@ -53,6 +57,8 @@ export class CountriesPage implements OnInit {
     this.router.navigate(['/news']);
   }
 
+
+  // set the capital city and latitude and longitude in storage and navigate to the weather page
   async getWeather(capitalCity: string, latitudeLongitude: any) {
     console.log(capitalCity, latitudeLongitude);
     await this.ds.set('capitalCity', capitalCity);

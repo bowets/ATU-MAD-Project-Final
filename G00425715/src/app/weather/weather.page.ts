@@ -50,6 +50,7 @@ export class WeatherPage implements OnInit {
 
   // ------- METHODS ------------
 
+  // Get the data from the storage
   async getDataFromStorage() {
     this.captialCity = await this.dataService.get('capitalCity');
     let latlng = await this.dataService.get('latitudeLongitude');
@@ -60,6 +61,7 @@ export class WeatherPage implements OnInit {
     console.log(this.url);
   }
 
+  // Get weather information from the API
   async getWeather() {
     this.options.url = this.url;
     let result = await this.httpservice.get(this.options);

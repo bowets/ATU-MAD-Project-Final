@@ -41,11 +41,13 @@ export class NewsPage implements OnInit {
 
   // ------- METHODS ------------
 
+  // Get the country code and name from the data service
   async getCountry() {
     this.countryCode = await this.ds.get('countryCode');
     this.countryName = await this.ds.get('countryName');
   }
 
+  // Check if the news data is empty to display a message on the page
   checkData(newsData: any) {
     if (newsData.length > 0) {
       this.hasNews = true;
@@ -54,6 +56,7 @@ export class NewsPage implements OnInit {
   }
 }
 
+// Get the news data from the API
   async getNews() {
     this.options.url = this.options.url.concat(this.countryCode);
     console.log(this.options.url);

@@ -76,7 +76,7 @@ export class HomePage {
     }
   }
 
-  // BOJAN: Disable button if input is empty or shorter than X characters.
+  // If the countryInput is empty, don't proceed and log that no country is entered.
   async searchCountry() {
     if (!this.countryInput) {
       console.log("No country entered");
@@ -84,7 +84,6 @@ export class HomePage {
     }
     console.log("Searching for country " + this.countryInput);
     await this.ds.set('country', this.countryInput);
-    // BOJAN: how to pass input value as param in router.navigate?
     this.router.navigate(['/countries']);
   }
 
